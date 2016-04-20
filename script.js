@@ -7,39 +7,41 @@ var button = document.getElementById("button");
 
 var guess = document.getElementById("text");
 
-var attempts = 0;
+var attempts = 3;
+//var rand = 0;
 
 
-function restartGame(rand) {
-//    rand = Math.floor(Math.random())
+function restartGame() {
+    //rand = Math.floor(Math.random() * 100) + 1;
     attempts = 0;
     block.innerHTML = "";
 }
 
 function handleGuess() {
-    if (attempts < 5) { 
-        if (guess.value < rand) {
+    if (guess.value < rand) {
         console.log("Guess is too low Bro");
         block.innerHTML = "Guess is too low Bro"; 
-        } else if (guess.value > rand) {
+    } else if (guess.value > rand) {
         console.log("Guess is way too high McFly");
         block.innerHTML = "Guess is way too high McFly";
-        } else {
+    } else {
         console.log("You Win Finn!");
         block.innerHTML = "You Win Finn!";
         setTimeout(restartGame, 2000);
-        }
     }
 }
 
+function guessLimit () {
+    if (handleGuess < attempts) {
+        block.innerHTML = "Try Again";
+    } else {
+        attempts --; //Decrementing by 1
+        block.innerHTML = "Oops, You Lose";
+    }
+}
 
 //Couldn't figure it out in time. here are a few starts that I tried to copy down for you guys....
 
-//function count() {
-//    if ()
-//    
-//}
-// for (Number = 0; Number <= 3; Number++
 
 //function guessLimit(){
 //    if (handleGuess > guessLimit){
@@ -47,13 +49,6 @@ function handleGuess() {
 //}
 //    document.write("Number" + Number)
 
-
-
-//function restartGame() {
-//    rand = Math.floor(Math.random())
-//    attempts = 0;
-//    block.innerHTML = "";
-//}
     
 //function handleButtonPress() {
 //    if (attempts < 5) 
@@ -62,6 +57,7 @@ function handleGuess() {
 console.log(rand);
 
 button.onclick = handleGuess;
+button2.onclick = restartGame;
 
 //END MATH GUESS
 
